@@ -42,6 +42,5 @@ SLD_Bucharest = {
     "Eforie": 161,
     "Vaslui": 199,
     "Iasi": 226,
-    "Neamt": 234,
-    "Bucharest": 0
+    "Neamt": 234
     }
