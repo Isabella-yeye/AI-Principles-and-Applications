@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="heuristics.py" />
     <Compile Include="mapOfRomania.py" />
     <Compile Include="breadthFirstSearch.py" />
     <Compile Include="assignment1SearchMain.py" />

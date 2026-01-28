@@ -1,2 +1,1 @@
-
-#this is a test
+# Implementation for breadth first search (BFS) algorithm
