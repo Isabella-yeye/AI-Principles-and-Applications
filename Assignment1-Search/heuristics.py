@@ -1,6 +1,6 @@
 # Two different ways to calculate heuristics for best first (greedy) algorithm and A* search algorithm
 import math
-import mapOfRomania
+import romaniaDistances
 
 # Triangle inequality heuristic
 # TODO
@@ -8,8 +8,8 @@ import mapOfRomania
 def traingleInequalityHeuristics(start, end):
     # If Bucharest is the goal, the straight line distance (SLD) is already known
     if end == "Bucharest":
-        return mapOfRomania.SLD_Bucharest[start] # Returns 0 because the SLD to Bucharest from Bucharest is 0
+        return romaniaDistances.SLD_Bucharest[start] # Returns 0 because the SLD to Bucharest from Bucharest is 0
     # Estimates the SLD using Bucharest as the intermediate city
     else:
         # Returns the absolute value of the start to Bucharest minus the end to Bucharest
-        return abs(mapOfRomania.SLD_Bucharest[start] - mapOfRomania.SLD_Bucharest[end]) 
+        return abs(romaniaDistances.SLD_Bucharest[start] - romaniaDistances.SLD_Bucharest[end]) 
