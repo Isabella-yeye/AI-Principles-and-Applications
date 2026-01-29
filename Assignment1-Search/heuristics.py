@@ -3,8 +3,6 @@ import math
 import romaniaDistances
 
 # Triangle inequality heuristic
-# TODO
-# MAKE SURE TO CHECK IN MAIN IF THE CITY EXISTS BEFORE SENDING IT HERE
 def traingleInequalityHeuristics(start, end):
     # If Bucharest is the goal, the straight line distance (SLD) is already known
     if end == "Bucharest":
