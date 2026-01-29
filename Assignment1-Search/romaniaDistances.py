@@ -22,6 +22,7 @@ romaina_map = {
     "Neamt": [("Iasi", 87)]
 }
 
+# Straight Line Distance (SLD) to Bucharest for each city from the lecture slides
 SLD_Bucharest = {
     "Arad": 366,
     "Zerind": 374,

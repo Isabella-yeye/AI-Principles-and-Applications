@@ -1,5 +1,6 @@
 import heuristics
 import romaniaDistances
+import haversineHeuristic
 
 def main():
     # Get the list of valid cities from the romaina_map
@@ -15,6 +16,7 @@ def main():
         print(", ".join(validCities))
         # Read user input for first city again and remove leading/trailing whitespace
         startCity = input().strip() 
+        startCity = startCity.title()
 
     print("\nPlease enter the ending city: ")
     # Read user input for second city and remove leading/trailing whitespace
@@ -26,9 +28,11 @@ def main():
         print(", ".join(validCities))
         # Read user input for first city again and remove leading/trailing whitespace
         endCity = input().strip()
+        endCity = endCity.title()
 
     # To be used with the best first (greedy algorithm) and A* algorithm
     traingleInequalityHeuristic = heuristics.traingleInequalityHeuristics(startCity, endCity)
+    haversineHeuristicValue = haversineHeuristic.haversine_StraightLine_Heuristic(startCity, endCity)
 
 if __name__ == "__main__":
     main()
