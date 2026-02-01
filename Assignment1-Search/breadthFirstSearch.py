@@ -7,7 +7,7 @@ def breadthFirstSearch(graph, start, end):
     queue = deque([[start]])
     visited = set() # Set to keep track of visited nodes
 
-    # Search whule there are paths to explore
+    # Search while there are paths to explore
     while queue:
         path = queue.popleft() # Remove the leftmost path from the queue (First In First Out - FIFO)
         node = path[-1] # Current node is the last node in the path

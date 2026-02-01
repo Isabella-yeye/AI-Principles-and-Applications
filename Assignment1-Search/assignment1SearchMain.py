@@ -3,6 +3,7 @@ import romaniaDistances
 import haversineHeuristic
 import breadthFirstSearch
 import depthFirstSearch
+import bestFirstSearch
 
 def main():
     # Get the list of valid cities from the romaina_map
@@ -33,16 +34,21 @@ def main():
         endCity = endCity.title()
 
     # To be used with the best first (greedy algorithm) and A* algorithm
-    traingleInequalityHeuristic = heuristics.traingleInequalityHeuristics(startCity, endCity)
-    haversineHeuristicValue = haversineHeuristic.haversine_StraightLine_Heuristic(startCity, endCity)
+    traingleInequalityHeuristic = heuristics.traingleInequalityHeuristics(endCity)
 
-    # Run all algorithms to compare performance
-    for i in range(0, 100):
-        # Breadth First Search
-        BFS = breadthFirstSearch.breadthFirstSearch(romaniaDistances.romaina_map, startCity, endCity)
+    # Breadth First Search
+    BFS = breadthFirstSearch.breadthFirstSearch(romaniaDistances.romaina_map, startCity, endCity)
 
-        # Depth First Search
-        DFS = depthFirstSearch.depthFirstSearch(startCity, endCity)
+    # Depth First Search
+    DFS = depthFirstSearch.depthFirstSearch(startCity, endCity)
+
+    # Best First Search (Greedy Algorithm)
+    BFS_Greedy = bestFirstSearch.bestFirstSearch(romaniaDistances.romaina_map, traingleInequalityHeuristic, startCity, endCity)
+
+    # Print the results
+    print(f"\nBreadth First Search path from {startCity} to {endCity}: {BFS}")
+    print(f"\nDepth First Search path from {startCity} to {endCity}: {DFS}")
+    print(f"\nBest First Search (Greedy Algorithm) path from {startCity} to {endCity}: {BFS_Greedy}")
 
 if __name__ == "__main__":
     main()

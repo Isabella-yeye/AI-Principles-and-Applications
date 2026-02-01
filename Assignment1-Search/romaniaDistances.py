@@ -21,27 +21,3 @@ romaina_map = {
     "Iasi": [("Vaslui", 92), ("Neamt", 87)],
     "Neamt": [("Iasi", 87)]
 }
-
-# Straight Line Distance (SLD) to Bucharest for each city from the lecture slides
-SLD_Bucharest = {
-    "Arad": 366,
-    "Zerind": 374,
-    "Oradea": 380,
-    "Sibiu": 253,
-    "Timisoara": 329,
-    "Lugoj": 244,
-    "Mehadia": 241,
-    "Drobeta": 242,
-    "Craiova": 160,
-    "Rimnicu Vilcea": 193,
-    "Fagaras": 176,
-    "Pitesti": 100,
-    "Bucharest": 0,
-    "Giurgiu": 77,
-    "Urziceni": 80,
-    "Hirsova": 151,
-    "Eforie": 161,
-    "Vaslui": 199,
-    "Iasi": 226,
-    "Neamt": 234
-    }
