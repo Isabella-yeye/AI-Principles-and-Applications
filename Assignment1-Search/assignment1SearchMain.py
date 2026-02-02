@@ -1,6 +1,6 @@
 import heuristics
 import romaniaDistances
-import haversineHeuristic
+#import haversineHeuristic: now in heuristics.py files
 import breadthFirstSearch
 import depthFirstSearch
 import bestFirstSearch
