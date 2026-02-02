@@ -1,4 +1,6 @@
 import math
+#MOVED table and haversineHeuristic into heuristics.py file
+
 # Heuristic to calculate straight line distance (km) using implementation of Haversine
 # formula based on equation from https://www.movable-type.co.uk/scripts/latlong.html
 # DD Coordinates taken from database.earth (https://database.earth/countries/romania/cities), 
@@ -27,34 +29,40 @@ romanina_city_coordinates = {
     "Neamt": (46.92336, 26.3738) #Municipiul Piatra-Neamt closest county to neamt coords from google maps
 }
 
-def haversine_StraightLine_Heuristic(city1: str, city2: str ):
+def haversineHeuristics(end: str):
     """Apply Haversine Formula to calculate distance between two cities based
        on DD coordinates listed in dictionary of Romanian cities listed above
 
        Args: 
-            city1 (string): name of first city
-            city2 (string): name of second city
+            end (str): last city in search
 
         Returns: 
-            distance (float): straightline distance between citiy inputs
+            haversineTable (float): table of straightline distances between cities and endpoint
      """
     #const value for radius of Earth
+    haversineTable={}
     R = 6371
+    # get coordinates for end city
+    latEnd, lonEnd = (romanina_city_coordinates[end])
+    for city in romanina_city_coordinates:
 
-    # get coordinates from tuple
-    lat1, lon1 = (romanina_city_coordinates[city1])
-    lat2, lon2 = (romanina_city_coordinates[city2])
+        # get coordinates from tuple
+        lat1, lon1 = (romanina_city_coordinates[city])
+        latEnd, lonEnd = (romanina_city_coordinates[end])
 
-    deltaLat = math.radians(lat2 - lat1)
-    deltaLon = math.radians(lon2 - lon1)
+        deltaLat = math.radians(latEnd - lat1)
+        deltaLon = math.radians(lonEnd - lon1)
 
-   #apply haversine formula
-    a = ( (math.sin(deltaLat/2)**2) + math.cos(math.radians(lat1)) * 
-         math.cos(math.radians(lat2)) * (math.sin(deltaLon/2)**2) )
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    distance = round(R * c, 2)
+       #apply haversine formula
+        a = ( (math.sin(deltaLat/2)**2) + math.cos(math.radians(lat1)) * 
+             math.cos(math.radians(latEnd)) * (math.sin(deltaLon/2)**2) )
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+        distance = round(R * c, 2)
 
-    return distance
+        # place city and distance into table
+        haversineTable[city] = distance
+    # return table of straight line distances
+    return haversineTable
 
 
 
