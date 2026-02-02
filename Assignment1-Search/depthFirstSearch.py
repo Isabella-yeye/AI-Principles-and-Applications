@@ -28,7 +28,7 @@ def depthFirstSearch(currentCity: str, goalCity: str, path: list[str] = []) -> l
     elif currentCity == goalCity:
         path.append(currentCity)
         return path
-
+    
     #add city to path list if not already visited and pass on next city
     elif currentCity not in path:
         path.append(currentCity)

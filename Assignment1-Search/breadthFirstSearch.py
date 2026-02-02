@@ -7,18 +7,29 @@ def breadthFirstSearch(graph, start, end):
     queue = deque([[start]])
     visited = set() # Set to keep track of visited nodes
 
+    # Performance metrics
+    nodesExpanded = 0
+    maxFrontierSize = len(queue) # Track maximum nodes waiting to be explored
+
     # Search while there are paths to explore
     while queue:
+        maxFrontierSize = max(maxFrontierSize, len(queue)) # Track maximum space usage
         path = queue.popleft() # Remove the leftmost path from the queue (First In First Out - FIFO)
         node = path[-1] # Current node is the last node in the path
 
         # If node is the end node, return the path
         if node == end:
-            return path
+            return {
+                "path": path, 
+                "nodesExpanded": nodesExpanded, 
+                "maxFrontierSize": maxFrontierSize,
+                "pathLength": len(path) - 1
+            }
 
         # Only expand this node if it hasn't been visited yet
         if node not in visited:
             visited.add(node)
+            nodesExpanded += 1
 
             # Look at the neighbors of the current node
             for neighbor, _ in graph[node]:
