@@ -1,8 +1,6 @@
 # Two different ways to calculate heuristics for best first (greedy) algorithm and A* search algorithm
 import math
 
-#haversineHeuristic = heuristics.haversineHeuristics(endCity)
-
 # Straight Line Distance (SLD) to Bucharest for each city from the lecture slides
 SLD_Bucharest = {
     "Arad": 366,
@@ -108,3 +106,5 @@ def haversineHeuristics(end: str):
         haversineTable[city] = distance
     # return table of straight line distances
     return haversineTable
+
+#haversineHeuristic = heuristics.haversineHeuristics(endCity)
