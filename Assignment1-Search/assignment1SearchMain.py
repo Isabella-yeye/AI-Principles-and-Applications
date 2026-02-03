@@ -97,9 +97,9 @@ def main():
             "Algorithm": "Depth First Search",
             "Heuristic": "N/A",
             "Path": DFS["path"],
-            "Path Length": DFS["pathLength"],
-            "Nodes Expanded": DFS["nodesExpanded"],
-            "Max Frontier Size": DFS["maxFrontierSize"],
+            "Path Length": DFS["path_length"],
+            "Nodes Expanded": DFS["nodes_expanded"],
+            "Max Frontier Size": DFS["max_frontier_size"],
             "Elapsed Time (seconds)": elapsedTime
         })
 
