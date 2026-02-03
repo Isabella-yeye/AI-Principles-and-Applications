@@ -7,18 +7,31 @@ def bestFirstSearch(graph, heuristics, start, end):
     # Set to keep track of visited nodes
     visited = set()
 
+    # Metric tracking
+    nodesExpanded = 0
+    maxFrontierSize = len(priorityQueue)
+
     # Search while there are nodes to explore
     while priorityQueue:
+        # Track maximum frontier size
+        maxFrontierSize = max(maxFrontierSize, len(priorityQueue))
+
         # Pop the node with the lowest heuristic value
         _, node, path = heapq.heappop(priorityQueue) # '_' ignores the heuristic value since we don't need it after popping
         
         # If node is the end node (city), return the path
         if node == end:
-            return path
+            return {
+                "path": path,
+                "nodes_expanded": nodesExpanded,
+                "max_frontier_size": maxFrontierSize,
+                "path_length": len(path) - 1
+            }
         
         # Only expand this node if it hasn't been visited yet
         if node not in visited:
             visited.add(node)
+            nodesExpanded += 1 # Increment for each node expanded
             
             # Explore the neighbors of the current node
             for neighbor, _ in graph[node]:
