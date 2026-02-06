@@ -4,6 +4,7 @@ import breadthFirstSearch
 import depthFirstSearch
 import bestFirstSearch
 import aStarSearch
+import pathCostCalculator
 
 def main():
     # Get the list of valid cities from the romaina_map
@@ -21,6 +22,9 @@ def main():
         startCity = input().strip() 
         startCity = startCity.title()
 
+    """
+    Commented out due to assignment changes, but available to uncomment to change the end city from Bucharest
+    
     print("\nPlease enter the ending city: ")
     # Read user input for second city and remove leading/trailing whitespace
     endCity = input().strip() 
@@ -32,6 +36,8 @@ def main():
         # Read user input for first city again and remove leading/trailing whitespace
         endCity = input().strip()
         endCity = endCity.title()
+        """
+    endCity = "Bucharest"
 
     # To be used with the best first (greedy algorithm) and A* algorithm
     traingleInequalityHeuristic = heuristics.traingleInequalityHeuristics(endCity)
@@ -39,25 +45,31 @@ def main():
 
     # Breadth First Search
     BFS = breadthFirstSearch.breadthFirstSearch(romaniaDistances.romaina_map, startCity, endCity)
+    BFSCost = pathCostCalculator.pathCostCalculator(romaniaDistances.romaina_map, BFS)
 
     # Depth First Search
     DFS = depthFirstSearch.depthFirstSearch(startCity, endCity)
+    DFSCost = pathCostCalculator.pathCostCalculator(romaniaDistances.romaina_map, DFS)
 
     # Best First Search (Greedy Algorithm)
     BFS_Greedy = bestFirstSearch.bestFirstSearch(romaniaDistances.romaina_map, traingleInequalityHeuristic, startCity, endCity) # Using Triangle Inequality Heuristic
     BFS_Greedy2 = bestFirstSearch.bestFirstSearch(romaniaDistances.romaina_map, haversineHeuristic, startCity, endCity) # Using Haversine Heuristic
+    BFS_GreedyCost = pathCostCalculator.pathCostCalculator(romaniaDistances.romaina_map, BFS_Greedy)
+    BFS_Greedy2Cost = pathCostCalculator.pathCostCalculator(romaniaDistances.romaina_map, BFS_Greedy2)
 
     # A* Search
     AStar = aStarSearch.aStarSearch(romaniaDistances.romaina_map, traingleInequalityHeuristic, startCity, endCity) # Using Triangle Inequality Heuristic
     AStar2 = aStarSearch.aStarSearch(romaniaDistances.romaina_map, haversineHeuristic, startCity, endCity) # Using Haversine Heuristic
+    AStarCost = pathCostCalculator.pathCostCalculator(romaniaDistances.romaina_map, AStar)
+    AStar2Cost = pathCostCalculator.pathCostCalculator(romaniaDistances.romaina_map, AStar2)
 
     # Print the results
-    print(f"\nBreadth First Search path from {startCity} to {endCity}: {BFS}")
-    print(f"\nDepth First Search path from {startCity} to {endCity}: {DFS}")
-    print(f"\nBest First Search (Greedy Algorithm) path using Triangle Inequality Heuristic from {startCity} to {endCity}: {BFS_Greedy}")
-    print(f"\nBest First Search (Greedy Algorithm) path using Haversine Heuristic from {startCity} to {endCity}: {BFS_Greedy2}")
-    print(f"\nA* Search path using Triangle Ineqaulity Heuristic from {startCity} to {endCity}: {AStar}")
-    print(f"\nA* Search path using Haversine Heuristic from {startCity} to {endCity}: {AStar2}")
+    print(f"\nBreadth First Search path from {startCity} to {endCity}: {BFS}. \nThe path cost is {BFSCost}.")
+    print(f"\nDepth First Search path from {startCity} to {endCity}: {DFS}. \nThe path cost is {DFSCost}.")
+    print(f"\nBest First Search (Greedy Algorithm) path using Triangle Inequality Heuristic from {startCity} to {endCity}: {BFS_Greedy}. \nThe path cost is {BFS_GreedyCost}.")
+    print(f"\nBest First Search (Greedy Algorithm) path using Haversine Heuristic from {startCity} to {endCity}: {BFS_Greedy2}. \nThe path cost is {BFS_Greedy2Cost}.")
+    print(f"\nA* Search path using Triangle Ineqaulity Heuristic from {startCity} to {endCity}: {AStar}. \nThe path cost is {AStarCost}.")
+    print(f"\nA* Search path using Haversine Heuristic from {startCity} to {endCity}: {AStar2}. \nThe path cost is {AStar2Cost}.")
 
 if __name__ == "__main__":
     main()

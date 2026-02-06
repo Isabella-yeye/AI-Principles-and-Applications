@@ -23,6 +23,7 @@
   <ItemGroup>
     <Compile Include="aStarSearch.py" />
     <Compile Include="bestFirstSearch.py" />
+    <Compile Include="pathCostCalculator.py" />
     <Compile Include="depthFirstSearch.py" />
     <Compile Include="heuristics.py" />
     <Compile Include="romaniaDistances.py" />
