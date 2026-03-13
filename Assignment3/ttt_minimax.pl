@@ -100,7 +100,6 @@ minimax_value(Board, Player, Value) :-
 
 %  generate all moves from board state
 best_move(Board, Player, BestBoard, BestValue) :-
-    clear_count,
     %get all moves and isolate first
     findall(B2, move(Board, Player, B2), Moves),
     Moves = [First|Rest],
