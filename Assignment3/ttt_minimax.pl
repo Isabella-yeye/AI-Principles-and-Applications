@@ -37,7 +37,7 @@ full(Board) :- \+ member(e, Board).
 
 % ---------- TODO A1: move/3 ----------
 % move(Board, Player, NextBoard) holds if NextBoard results from placing Player in an empty cell.
-move(Board, _Player, _NextBoard) :-
+move(Board, Player, NextBoard) :-
     % pick an empty cell
     member(e, Board),
 
